@@ -10,6 +10,9 @@ a matching headset is plugged in. The behaviour comes from the
 [`corsair-v2w` driver](../borochid-driver-corsair-v2w), a system package
 the GUI offers to install through PackageKit the first time it's needed.
 
+**License:** Apache-2.0, except the headset's picture, which is Corsair's
+product photo and not covered by it. See [NOTICE](NOTICE).
+
 ## What's in the manifest
 
 | Section | Purpose |

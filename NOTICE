@@ -1,0 +1,15 @@
+borochid-corsair-virtuoso
+Copyright 2026 Rodolfo Justiniano
+
+This repository is licensed under the Apache License 2.0 (see LICENSE),
+with one exception:
+
+* corsair.virtuoso/images/virtuoso.png is a product photograph of a
+  Corsair Virtuoso headset, © Corsair. It is NOT covered by the Apache
+  License. It is included only to identify the device in the Borochid app,
+  scaled down from Corsair's product imagery. Corsair and Virtuoso are
+  trademarks of Corsair Memory, Inc. This project is not affiliated with
+  or endorsed by Corsair.
+
+If you are the rights holder and want the picture removed, open an issue
+and it will be replaced.
