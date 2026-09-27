@@ -3,6 +3,10 @@
   "id": "corsair.virtuoso",
   "version": "0.1.0",
   "name": "Corsair Virtuoso",
+  "category": "headset",
+  "image": "images/virtuoso.png",
+  "battery": {"level": "battery", "charging": "charging", "refresh": "refresh_battery", "refresh_if": "online"},
+  "available": {"state": "link", "values": ["online", "wired"]},
   "display_name": [
     {"match": "corsair virtuoso {model:upper} *", "format": "Corsair Virtuoso {model}"},
     {"match": "corsair virtuoso *", "format": "Corsair Virtuoso"}
@@ -50,41 +54,33 @@
         ]
       },
       "battery": {"poll_s": 1800, "low_percent": 15, "samples": 3},
-      "sidetone": {},
       "mic_button": {}
     }
   },
 
   "ui": [
-    {"widget": "group", "label": "Status", "children": [
-      {"widget": "readout", "label": "Headset", "state": "link",
-       "map": {"online": "Connected", "offline": "Not answering", "standby": "Switched off", "wired": "USB cable"}},
-      {"widget": "readout", "label": "Battery", "state": "battery", "suffix": "%", "map": {"null": "—"}},
-      {"widget": "readout", "label": "Power", "state": "charging",
-       "map": {"true": "Charging", "false": "On battery", "null": "—"}},
-      {"widget": "button", "label": "", "text": "Refresh battery", "action": "refresh_battery", "enabled_if": "online"}
+    {"widget": "group", "label": "Lighting", "icon": ["games-hint", "keyboard-brightness-symbolic", "display-brightness-symbolic"], "enabled_if": "wireless", "children": [
+      {"widget": "row", "label": "Logo", "children": [
+        {"widget": "color", "tooltip": "Logo color", "state": "logo_color", "action": "set_logo_color", "param": "value"},
+        {"widget": "slider", "tooltip": "Logo brightness", "icon": ["brightness-high", "display-brightness-symbolic"],
+         "min": 0, "max": 100, "state": "logo_brightness", "action": "set_logo_brightness", "param": "value"}
+      ]},
+      {"widget": "row", "label": "Microphone", "children": [
+        {"widget": "color", "tooltip": "Microphone color", "state": "mic_color", "action": "set_mic_color", "param": "value"},
+        {"widget": "slider", "tooltip": "Microphone brightness", "icon": ["brightness-high", "display-brightness-symbolic"],
+         "min": 0, "max": 100, "state": "mic_brightness", "action": "set_mic_brightness", "param": "value"}
+      ]},
+      {"widget": "color", "label": "When muted", "tooltip": "Microphone color while muted", "state": "mic_muted_color", "action": "set_mic_muted_color", "param": "value"}
     ]},
-    {"widget": "group", "label": "Lighting", "enabled_if": "wireless", "children": [
-      {"widget": "color", "label": "Logo", "state": "logo_color", "action": "set_logo_color", "param": "value"},
-      {"widget": "slider", "label": "Logo brightness", "min": 0, "max": 100, "state": "logo_brightness", "action": "set_logo_brightness", "param": "value"},
-      {"widget": "color", "label": "Microphone", "state": "mic_color", "action": "set_mic_color", "param": "value"},
-      {"widget": "slider", "label": "Mic brightness", "min": 0, "max": 100, "state": "mic_brightness", "action": "set_mic_brightness", "param": "value"},
-      {"widget": "color", "label": "Mic when muted", "state": "mic_muted_color", "action": "set_mic_muted_color", "param": "value"}
-    ]},
-    {"widget": "group", "label": "Microphone", "children": [
-      {"widget": "readout", "label": "State", "state": "audio.mic_muted",
-       "map": {"true": "Muted", "false": "Live", "null": "—"}},
-      {"widget": "button", "label": "", "text": "Toggle mute", "action": "audio.toggle_mic_mute"},
-      {"widget": "toggle", "label": "Feedback tone", "state": "audio.mute_tone", "action": "audio.set_mute_tone", "param": "value"}
-    ]},
-    {"widget": "group", "label": "Audio", "children": [
+    {"widget": "group", "label": "Audio", "icon": ["audio-volume-high", "audio-volume-high-symbolic"], "children": [
       {"widget": "slider", "label": "Volume", "min": 0, "max": 100, "state": "audio.volume", "action": "audio.set_volume", "param": "value"},
+      {"widget": "readout", "label": "Microphone", "state": "audio.mic_muted",
+       "icon": {"map": {"true": ["microphone-sensitivity-muted", "microphone-sensitivity-muted-symbolic"],
+                        "false": ["microphone-sensitivity-high", "microphone-sensitivity-high-symbolic"]}},
+       "map": {"true": "Muted", "false": "Live", "null": "—"}},
+      {"widget": "toggle", "label": "Mute feedback tone", "state": "audio.mute_tone", "action": "audio.set_mute_tone", "param": "value"},
       {"widget": "slider", "label": "Sidetone", "min": 0, "max": 100, "state": "audio.sidetone", "action": "audio.set_sidetone", "param": "value"},
       {"widget": "toggle", "label": "Sidetone off on exit", "state": "audio.sidetone_off_on_exit", "action": "audio.set_sidetone_off_on_exit", "param": "value"}
-    ]},
-    {"widget": "group", "label": "Headset sidetone (bypasses the sound card)", "enabled_if": "sidetone_supported", "children": [
-      {"widget": "slider", "label": "Level", "min": 0, "max": 100, "state": "sidetone", "action": "set_sidetone", "param": "value"},
-      {"widget": "toggle", "label": "Off on exit", "state": "sidetone_off_on_exit", "action": "set_sidetone_off_on_exit", "param": "value"}
     ]}
   ]
 }

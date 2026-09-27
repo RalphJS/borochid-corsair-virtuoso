@@ -3,7 +3,8 @@
 Borochid device package for the **Corsair Virtuoso** headset family
 (Virtuoso SE / XT / RGB Wireless, on the dongle or a USB cable).
 
-This repo is **data only**: `corsair.virtuoso/manifest.json`. It is
+This repo is **data only**: `corsair.virtuoso/manifest.json` and the
+headset's picture, `corsair.virtuoso/images/virtuoso.png`. It is
 published, signed, to the Borochid registry, and the service downloads it when
 a matching headset is plugged in. The behaviour comes from the
 [`corsair-v2w` driver](../borochid-driver-corsair-v2w), a system package
@@ -19,6 +20,10 @@ the GUI offers to install through PackageKit the first time it's needed.
 | `audio` | Enables the service's audio service. Names are matched against sound cards and PipeWire nodes, and must stay specific: a loose term like "gaming" once matched a "G560 Gaming Speaker". |
 | `v2w` | The model profile: which PIDs are wireless vs wired, LED zones in frame order (logo, battery, mic), and features and their timings. |
 | `display_name` | Tidies the name the headset reports: `CORSAIR VIRTUOSO SE Wireless Gaming Headset` becomes **Corsair Virtuoso SE**. The model suffix is taken from the reported name, so XT and RGB models need no changes. |
+| `category` | `headset`: the GUI's fallback icon when there is no picture. |
+| `image` | The picture the GUI shows for the headset. PNG, at most 384×384 and 256 KiB; `make check` enforces it. |
+| `battery` | Which driver state holds the battery level and charging flag, and the action behind the refresh button (offered while the headset is online). The GUI draws the battery icon. |
+| `available` | The headset can be used while `link` is `online` or `wired`. With the headset off (`standby`) or not answering (`offline`), the GUI fades its picture, hides the battery and disables the settings. |
 | `summary` | The one-line status in the device list ("Connected", "Headset off", …). |
 | `ui` | The control panel the Borochid GUI renders. |
 
