@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "id": "corsair.virtuoso-receiver",
+  "version": "0.1.0",
+  "name": "Corsair Virtuoso Receiver",
+  "category": "receiver",
+  "image": "images/receiver.png",
+  "display_name": [
+    {"match": "corsair virtuoso {model:upper} *", "format": "Corsair Virtuoso {model} Receiver"},
+    {"match": "corsair virtuoso *", "format": "Corsair Virtuoso Receiver"}
+  ],
+  "match": [
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a3e", "paired": false, "connection": "usb"},
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a3f", "paired": false, "connection": "usb"},
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a42", "paired": false, "connection": "usb"},
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a4a", "paired": false, "connection": "usb"},
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a63", "paired": false, "connection": "usb"},
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a46", "channel": null, "connection": "usb"}
+  ],
+  "channel": {"type": "hid", "interface": [4, 3], "report_size": 65},
+  "driver": {
+    "type": "corsair-v2w-receiver",
+    "version": ">=0.2,<1",
+    "provided_by": "borochid-driver-corsair-v2w"
+  },
+  "summary": {
+    "state": "link",
+    "map": {"online": "Headset connected", "offline": "Headset not answering", "standby": "Headset off"}
+  },
+
+  "v2w": {
+    "links": {
+      "wireless": ["0x0a3e", "0x0a3f", "0x0a42", "0x0a4a", "0x0a63"],
+      "standby": ["0x0a46"]
+    },
+    "receiver_software_mode": false,
+    "keepalive_s": 20,
+    "probe_s": 10,
+    "probe_max_s": 600
+  },
+
+  "ui": [
+    {"widget": "readout", "label": "Headset", "state": "link",
+     "map": {"online": "Connected", "offline": "Not answering", "standby": "Switched off or on its cable"}},
+    {"widget": "readout", "label": "Firmware", "state": "firmware", "map": {"null": "—"}}
+  ]
+}
