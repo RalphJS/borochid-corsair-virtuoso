@@ -5,23 +5,23 @@
   "name": "Corsair Virtuoso",
   "category": "headset",
   "image": "images/virtuoso.png",
-  "battery": {"level": "battery", "charging": "charging", "refresh": "refresh_battery", "refresh_if": "online"},
+  "battery": {"level": "battery", "charging": "charging"},
   "available": {"state": "link", "values": ["online", "wired"]},
   "display_name": [
     {"match": "corsair virtuoso {model:upper} *", "format": "Corsair Virtuoso {model}"},
     {"match": "corsair virtuoso *", "format": "Corsair Virtuoso"}
   ],
   "match": [
-    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a3e"},
-    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a3f"},
-    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a42"},
-    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a4a"},
-    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a63"},
-    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a3d"},
-    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a41"},
-    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a49"},
-    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a62"},
-    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a46", "channel": null}
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a3e", "connection": "wireless"},
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a3f", "connection": "wireless"},
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a42", "connection": "wireless"},
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a4a", "connection": "wireless"},
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a63", "connection": "wireless"},
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a3d", "connection": "cable"},
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a41", "connection": "cable"},
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a49", "connection": "cable"},
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a62", "connection": "cable"},
+    {"bus": "usb", "vid": "0x1b1c", "pid": "0x0a46", "channel": null, "connection": "wireless"}
   ],
   "channel": {"type": "hid", "interface": [4, 3], "report_size": 65},
   "driver": {
@@ -59,7 +59,7 @@
   },
 
   "ui": [
-    {"widget": "group", "label": "Lighting", "icon": ["games-hint", "keyboard-brightness-symbolic", "display-brightness-symbolic"], "enabled_if": "wireless", "children": [
+    {"widget": "group", "label": "Lighting", "icon": ["brightness-high", "display-brightness-symbolic", "games-hint"], "enabled_if": "wireless", "children": [
       {"widget": "row", "label": "Logo", "children": [
         {"widget": "color", "tooltip": "Logo color", "state": "logo_color", "action": "set_logo_color", "param": "value"},
         {"widget": "slider", "tooltip": "Logo brightness", "icon": ["brightness-high", "display-brightness-symbolic"],

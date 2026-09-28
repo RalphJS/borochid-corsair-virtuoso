@@ -25,7 +25,7 @@ Corsair's product photography, which is not covered by it. See [NOTICE](NOTICE).
 | `display_name` | Tidies the name the headset reports: `CORSAIR VIRTUOSO SE Wireless Gaming Headset` becomes **Corsair Virtuoso SE**. The model suffix is taken from the reported name, so XT and RGB models need no changes. |
 | `category` | `headset`: the GUI's fallback icon when there is no picture. |
 | `image` | The picture the GUI shows for the headset. PNG, at most 384×384 and 256 KiB; `make check` enforces it. |
-| `battery` | Which driver state holds the battery level and charging flag, and the action behind the refresh button (offered while the headset is online). The GUI draws the battery icon. |
+| `battery` | Which driver state holds the battery level and charging flag. The GUI draws the battery icon. No refresh action: the headset reports every change itself. |
 | `available` | The headset can be used while `link` is `online` or `wired`. With the headset off (`standby`) or not answering (`offline`), the GUI fades its picture, hides the battery and disables the settings. |
 | `summary` | The one-line status in the device list ("Connected", "Headset off", …). |
 | `ui` | The control panel the Borochid GUI renders. |
